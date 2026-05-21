@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # RAG Pipeline — Semantic Search Backend
 
 A full-stack RAG (Retrieval-Augmented Generation) pipeline with a FastAPI backend and React frontend. Supports ingesting data from uploaded files or existing PostgreSQL tables, building FAISS vector indexes, and querying the indexed data via semantic search or LLM-powered summaries.
