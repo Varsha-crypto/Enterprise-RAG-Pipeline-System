@@ -249,4 +249,3 @@ Developed enterprise-grade platform capabilities including:
 * Research assistant platforms
 * Offline enterprise AI systems
 * Secure document intelligence solutions
->>>>>>> 13f1ed1b8ca441e045c829f2a890772bc1b80d9f
