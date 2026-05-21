@@ -1,0 +1,12 @@
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.log
+faiss_indexes
+model_cache
+.git
+.gitignore
+docker-compose.yml

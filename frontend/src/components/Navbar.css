@@ -1,0 +1,78 @@
+.navbar {
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    padding-right: 100px; /* Increased to 100px as requested */
+}
+
+.nav-logo-img {
+    height: 50px; /* Slightly larger for better visibility */
+    width: auto;
+    object-fit: contain;
+}
+
+.left-logo {
+    margin-right: 12px;
+}
+
+.right-logo {
+    margin-left: 12px;
+}
+
+.logo-placeholder {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    margin-left: 4px;
+}
+
+.logo-text-shakti {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #4387a3; /* Closer to the Shakti blue in the image */
+    letter-spacing: -0.5px;
+}
+
+.logo-text-db {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #334155;
+    letter-spacing: -0.5px;
+}
+
+.logo-tm {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+    align-self: flex-start;
+    margin-top: 4px;
+    margin-left: 2px;
+}

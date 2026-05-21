@@ -1,0 +1,229 @@
+.dashboard-container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.dashboard-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dashboard-subtitle {
+    font-size: 1.25rem;
+    color: #475569;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.dashboard-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+}
+
+.action-card {
+    cursor: pointer;
+}
+
+.action-card:hover {
+    transform: translateY(-12px);
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.static-card {
+    opacity: 0.8;
+}
+
+.card-bg-gradient {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0, 210, 255, 0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card-bg-gradient.secondary {
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+}
+
+/* Gradient removed for cleaner white theme hover */
+.dashboard-card:hover .card-bg-gradient {
+    opacity: 0;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: rgba(0, 210, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: #00d2ff;
+}
+
+.card-icon-wrapper.secondary {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+}
+
+.card-icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #0f172a;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+}
+
+.btn-start {
+    font-weight: 600;
+    color: #00d2ff;
+    transition: color 0.3s ease;
+}
+
+/* Button hover color change removed for cleaner look */
+.action-card:hover .btn-start {
+    color: #00d2ff;
+}
+
+.badge {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: #64748b;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2.5rem;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Saved Configurations section ─────────────────────────────── */
+.dashboard-saved-configs {
+    margin-top: 2.5rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.saved-configs-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.3rem 0;
+}
+.saved-configs-subtitle {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin: 0 0 1.1rem 0;
+}
+.saved-configs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.saved-config-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    transition: border-color 0.15s;
+}
+.saved-config-row:hover { border-color: #93c5fd; }
+.saved-config-info {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.saved-config-icon { font-size: 1.1rem; }
+.saved-config-name { font-size: 0.875rem; font-weight: 600; color: #1e293b; }
+.saved-config-meta { font-size: 0.72rem; color: #94a3b8; margin-top: 0.1rem; }
+.btn-rerun {
+    padding: 0.4rem 0.9rem;
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+.btn-rerun:hover { background: #2563eb; color: #fff; border-color: #2563eb; }

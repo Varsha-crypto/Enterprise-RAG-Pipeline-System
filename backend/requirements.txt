@@ -1,0 +1,36 @@
+# Core dependencies for demo
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-dotenv==1.0.0
+
+# Database
+psycopg2-binary==2.9.9
+
+# Vector search
+faiss-cpu>=1.8.0,<1.9
+sentence-transformers>=2.6.0
+numpy>=1.26.0
+
+# Pydantic for data validation
+pydantic==2.5.0
+
+# Dataset loading for Wikipedia data for increased chunks with varying semantics
+datasets>=2.14.0
+
+einops>=0.8.2
+python-multipart==0.0.20
+
+# LLM Support (Legacy Service - now replaced by Groq API)
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.24.0
+sentencepiece>=0.1.99  # For some tokenizers
+protobuf>=3.20.0
+bitsandbytes>=0.41.0 # Optional but recommended for faster inference through quantisation
+
+# Groq LLM API client
+groq>=0.4.0
+
+# Rate limiting
+slowapi==0.1.9
+

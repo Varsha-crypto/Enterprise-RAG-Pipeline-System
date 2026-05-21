@@ -1,0 +1,158 @@
+.wizard-stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.stepper-progress-bar-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--border-color);
+    border-radius: 1.5px;
+    z-index: 1;
+    transform: translateY(-50%) translateY(-10px);
+}
+
+.stepper-progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 1.5px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+    background-color: transparent;
+    padding: 0 10px;
+}
+
+.step-item.clickable {
+    cursor: pointer;
+}
+
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--surface-white);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.75rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.step-item.active .step-indicator {
+    border-color: var(--primary-color);
+    background-color: var(--surface-white);
+    color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    transform: scale(1.1);
+}
+
+.step-item.completed .step-indicator {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: scale(1);
+    box-shadow: var(--shadow-md);
+}
+
+.step-item.skipped .step-indicator {
+    background-color: transparent;
+    border-color: var(--text-muted);
+    border-style: dashed;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.step-item.skipped .step-label {
+    color: var(--text-muted);
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.step-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: all 300ms ease;
+    white-space: nowrap;
+}
+
+.step-item.active .step-label {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.step-item.completed .step-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Vertical Orientation (Sidebar) */
+.wizard-stepper.vertical {
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    padding: 1rem 0;
+    gap: 3.5rem;
+    align-items: flex-start;
+}
+
+.wizard-stepper.vertical .stepper-progress-bar-container {
+    left: 20px;
+    right: auto;
+    top: 2rem;
+    bottom: 2rem;
+    width: 3px;
+    height: auto;
+    transform: none;
+    background-color: var(--border-color);
+}
+
+.wizard-stepper.vertical .stepper-progress-bar {
+    width: 100%;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wizard-stepper.vertical .step-item {
+    flex-direction: row;
+    padding: 0;
+    gap: 1.25rem;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.wizard-stepper.vertical .step-indicator {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.wizard-stepper.vertical .step-label {
+    white-space: normal;
+    text-align: left;
+    font-size: 0.9375rem;
+    max-width: 180px;
+    line-height: 1.3;
+}
+
+.wizard-stepper.vertical .step-item.active .step-label {
+    color: var(--primary-color);
+}

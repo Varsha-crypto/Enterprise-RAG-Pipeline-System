@@ -1,0 +1,114 @@
+# version: "3.9"
+
+# # Base config — runs on any machine (CPU or GPU).
+# # For GPU: run via ./run.sh (auto-detects) or:
+# #   docker-compose -f docker-compose.yml -f docker-compose.gpu.yml up --build
+
+# services:
+
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     image: shaktidb-backend
+#     container_name: shaktidb_backend
+#     restart: unless-stopped
+#     ports:
+#       - "12000:12000"
+#     env_file:
+#       - ./backend/.env
+#     volumes:
+#       - ./backend/faiss_indexes:/app/faiss_indexes
+#       - ./backend/configs:/app/configs
+#       - hf_model_cache:/app/model_cache
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:12000/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+#       start_period: 60s
+
+#   frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile
+#     image: shaktidb-frontend
+#     container_name: shaktidb_frontend
+#     restart: unless-stopped
+#     ports:
+#       - "12001:12001"
+#     depends_on:
+#       backend:
+#         condition: service_healthy
+
+# volumes:
+#   hf_model_cache:
+
+
+version: "3.9"
+
+# Base config — runs on any machine (CPU or GPU).
+# For GPU: run via ./run.sh (auto-detects) or:
+#   docker-compose -f docker-compose.yml -f docker-compose.gpu.yml up --build
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: shaktidb_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: shaktidb-backend
+    container_name: shaktidb_backend
+    restart: unless-stopped
+    ports:
+      - "12000:12000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/faiss_indexes:/app/faiss_indexes
+      - ./backend/configs:/app/configs
+      - hf_model_cache:/app/model_cache
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:12000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: shaktidb-frontend
+    container_name: shaktidb_frontend
+    restart: unless-stopped
+    ports:
+      - "12001:12001"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  hf_model_cache:
+  pg_data:

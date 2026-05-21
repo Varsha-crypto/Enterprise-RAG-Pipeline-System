@@ -1,0 +1,43 @@
+# Log files
+*.log
+backend/backend.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr
+*.local
+
+# FAISS and Pipeline Data
+backend/faiss_indexes/*
+!backend/faiss_indexes/.gitkeep
+backend/configs/*
+!backend/configs/.gitkeep
+backend/indexes/*
+!backend/indexes/.gitkeep
+
+# Docker / HuggingFace model cache
+backend/model_cache/
+
+# Logs directory
+logs/
+
+# System / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Zip/Archive
+*.zip
+*.tar.gz

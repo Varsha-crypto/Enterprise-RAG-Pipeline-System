@@ -1,0 +1,15 @@
+version: "3.9"
+
+# GPU override — merged on top of docker-compose.yml by run.sh when an NVIDIA
+# GPU is detected. Requires NVIDIA Container Toolkit on the host.
+# https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+
+services:
+  backend:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
